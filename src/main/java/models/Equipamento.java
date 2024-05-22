@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 @Entity
 public class Equipamento {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipamento;
