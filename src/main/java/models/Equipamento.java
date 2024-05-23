@@ -1,11 +1,10 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
+
 @Entity
 public class Equipamento {
     @Id
@@ -15,15 +14,19 @@ public class Equipamento {
     private String descricao;
     private String estardo;
 
+    @OneToMany(mappedBy = "equipamento")
+    private List<Equipamento> listaDeEquipamento;
+
     public Equipamento() {
 
     }
 
-    public Equipamento(Long idEquipamento, String tipoEquipamento, String descricao, String estardo) {
+    public Equipamento(Long idEquipamento, String tipoEquipamento, String descricao, String estardo, List<Equipamento> listaDeEquipamento) {
         this.idEquipamento = idEquipamento;
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
         this.estardo = estardo;
+        this.listaDeEquipamento = listaDeEquipamento;
     }
 
     public Long getIdEquipamento() {
@@ -58,6 +61,13 @@ public class Equipamento {
         this.estardo = estardo;
     }
 
+    public List<Equipamento> getListaDeEquipamento() {
+        return listaDeEquipamento;
+    }
+
+    public void setListaDeEquipamento(List<Equipamento> listaDeEquipamento) {
+        this.listaDeEquipamento = listaDeEquipamento;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -70,7 +80,8 @@ public class Equipamento {
         if (!Objects.equals(tipoEquipamento, that.tipoEquipamento))
             return false;
         if (!Objects.equals(descricao, that.descricao)) return false;
-        return Objects.equals(estardo, that.estardo);
+        if (!Objects.equals(estardo, that.estardo)) return false;
+        return Objects.equals(listaDeEquipamento, that.listaDeEquipamento);
     }
 
     @Override
@@ -79,6 +90,7 @@ public class Equipamento {
         result = 31 * result + (tipoEquipamento != null ? tipoEquipamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (estardo != null ? estardo.hashCode() : 0);
+        result = 31 * result + (listaDeEquipamento != null ? listaDeEquipamento.hashCode() : 0);
         return result;
     }
 
@@ -89,6 +101,7 @@ public class Equipamento {
                 ", tipoEquipamento='" + tipoEquipamento + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", estardo='" + estardo + '\'' +
+                ", listaDeEquipamento=" + listaDeEquipamento +
                 '}';
     }
 }
