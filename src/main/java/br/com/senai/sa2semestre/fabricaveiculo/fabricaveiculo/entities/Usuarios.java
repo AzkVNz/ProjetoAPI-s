@@ -1,4 +1,4 @@
-package models;
+package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUsuario;
+    private Long idUsuario;
     private String nome;
     private String email;
     private String senha;
@@ -74,7 +74,7 @@ public class Usuarios {
 
         Usuarios usuarios = (Usuarios) o;
 
-        if (idUsuario != usuarios.idUsuario) return false;
+        if (!idUsuario.equals(usuarios.idUsuario)) return false;
         if (!Objects.equals(nome, usuarios.nome)) return false;
         if (!Objects.equals(email, usuarios.email)) return false;
         if (!Objects.equals(senha, usuarios.senha)) return false;
@@ -83,7 +83,7 @@ public class Usuarios {
 
     @Override
     public int hashCode() {
-        int result = (int) (idUsuario ^ (idUsuario >>> 32));
+        int result = idUsuario.hashCode();
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (senha != null ? senha.hashCode() : 0);

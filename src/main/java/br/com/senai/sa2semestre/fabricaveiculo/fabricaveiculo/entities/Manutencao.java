@@ -1,9 +1,8 @@
-package models;
+package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -11,9 +10,9 @@ public class Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long iDManutencao;
+    private Long iDManutencao;
     @ManyToOne
-    @JoinColumn(name = "idEquimento", referencedColumnName = "idEquipamento")
+    @JoinColumn(name = "idEquipamento", referencedColumnName = "idEquipamento")
     private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
@@ -90,7 +89,7 @@ public class Manutencao {
 
         Manutencao that = (Manutencao) o;
 
-        if (iDManutencao != that.iDManutencao) return false;
+        if (!iDManutencao.equals(that.iDManutencao)) return false;
         if (!Objects.equals(equipamento, that.equipamento)) return false;
         if (!Objects.equals(dataHoraInicio, that.dataHoraInicio))
             return false;
@@ -102,7 +101,7 @@ public class Manutencao {
 
     @Override
     public int hashCode() {
-        int result = (int) (iDManutencao ^ (iDManutencao >>> 32));
+        int result = iDManutencao.hashCode();
         result = 31 * result + (equipamento != null ? equipamento.hashCode() : 0);
         result = 31 * result + (dataHoraInicio != null ? dataHoraInicio.hashCode() : 0);
         result = 31 * result + (dataHoraFim != null ? dataHoraFim.hashCode() : 0);

@@ -1,4 +1,4 @@
-package models;
+package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.*;
 
@@ -12,7 +12,7 @@ public class Equipamento {
     private Long idEquipamento;
     private String tipoEquipamento;
     private String descricao;
-    private String estardo;
+    private String estado;
 
     @OneToMany(mappedBy = "equipamento")
     private List<Equipamento> listaDeEquipamento;
@@ -25,7 +25,7 @@ public class Equipamento {
         this.idEquipamento = idEquipamento;
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
-        this.estardo = estardo;
+        this.estado = estardo;
         this.listaDeEquipamento = listaDeEquipamento;
     }
 
@@ -54,11 +54,11 @@ public class Equipamento {
     }
 
     public String getEstardo() {
-        return estardo;
+        return estado;
     }
 
     public void setEstardo(String estardo) {
-        this.estardo = estardo;
+        this.estado = estardo;
     }
 
     public List<Equipamento> getListaDeEquipamento() {
@@ -80,7 +80,7 @@ public class Equipamento {
         if (!Objects.equals(tipoEquipamento, that.tipoEquipamento))
             return false;
         if (!Objects.equals(descricao, that.descricao)) return false;
-        if (!Objects.equals(estardo, that.estardo)) return false;
+        if (!Objects.equals(estado, that.estado)) return false;
         return Objects.equals(listaDeEquipamento, that.listaDeEquipamento);
     }
 
@@ -89,7 +89,7 @@ public class Equipamento {
         int result = idEquipamento.hashCode();
         result = 31 * result + (tipoEquipamento != null ? tipoEquipamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
-        result = 31 * result + (estardo != null ? estardo.hashCode() : 0);
+        result = 31 * result + (estado != null ? estado.hashCode() : 0);
         result = 31 * result + (listaDeEquipamento != null ? listaDeEquipamento.hashCode() : 0);
         return result;
     }
@@ -100,7 +100,7 @@ public class Equipamento {
                 "idEquipamento=" + idEquipamento +
                 ", tipoEquipamento='" + tipoEquipamento + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", estardo='" + estardo + '\'' +
+                ", estado='" + estado + '\'' +
                 ", listaDeEquipamento=" + listaDeEquipamento +
                 '}';
     }
