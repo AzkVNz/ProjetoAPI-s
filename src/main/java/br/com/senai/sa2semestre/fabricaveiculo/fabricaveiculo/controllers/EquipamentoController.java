@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("/equipamento")
+@RequestMapping("/equipamentos")
 public class EquipamentoController {
 
     @Autowired
@@ -32,13 +32,13 @@ public class EquipamentoController {
 
     /**
      * Obtém um equipamento por ID.
-     * @param idParaBusca o ID do equipamento.
+     * @param id o ID do equipamento.
      * @return o equipamento com o ID especificado.
      */
 
     @GetMapping("/{id}")
-    public ResponseEntity<Equipamento> getEquipamentoById(@PathVariable Long idParaBusca) {
-        Optional<Equipamento> equipamentoBuscado = equipamentoRepository.findById(idParaBusca);
+    public ResponseEntity<Equipamento> getEquipamentoById(@PathVariable Long id) {
+        Optional<Equipamento> equipamentoBuscado = equipamentoRepository.findById(id);
         return equipamentoBuscado.map(ResponseEntity::ok).orElseGet(() ->
                 ResponseEntity.notFound().build());
     }
@@ -74,13 +74,13 @@ public class EquipamentoController {
 
     /**
      * Exclui um equipamento por ID.
-     * @param idDoObjetoParaDeletar o ID do equipamento a ser excluído.
+     * @param id o ID do equipamento a ser excluído.
      * @return uma resposta indicando o sucesso ou falha da operação.
      */
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEquipamento(@PathVariable Long idDoObjetoParaDeletar) {
-        Optional<Equipamento> equipamentoParaDeletar = equipamentoRepository.findById(idDoObjetoParaDeletar);
+    public ResponseEntity<Void> deleteEquipamento(@PathVariable Long id) {
+        Optional<Equipamento> equipamentoParaDeletar = equipamentoRepository.findById(id);
         if (equipamentoParaDeletar.isPresent()) {
             equipamentoRepository.delete(equipamentoParaDeletar.get());
             return ResponseEntity.noContent().build();
