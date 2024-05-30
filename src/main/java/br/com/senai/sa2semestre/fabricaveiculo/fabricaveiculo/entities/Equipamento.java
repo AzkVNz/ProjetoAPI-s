@@ -15,7 +15,7 @@ public class Equipamento {
     private String estado;
 
     @OneToMany(mappedBy = "equipamento")
-    private List<Equipamento> listaDeEquipamento;
+    private List<Manutencao> listaDeManutencao;
 
     public Equipamento() {
 
@@ -26,7 +26,7 @@ public class Equipamento {
         this.tipoEquipamento = tipoEquipamento;
         this.descricao = descricao;
         this.estado = estardo;
-        this.listaDeEquipamento = listaDeEquipamento;
+        this.listaDeManutencao = listaDeManutencao;
     }
 
     public Long getIdEquipamento() {
@@ -53,20 +53,20 @@ public class Equipamento {
         this.descricao = descricao;
     }
 
-    public String getEstardo() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstardo(String estardo) {
-        this.estado = estardo;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public List<Equipamento> getListaDeEquipamento() {
-        return listaDeEquipamento;
+    public List<Manutencao> getListaDeManutencao() {
+        return listaDeManutencao;
     }
 
-    public void setListaDeEquipamento(List<Equipamento> listaDeEquipamento) {
-        this.listaDeEquipamento = listaDeEquipamento;
+    public void setListaDeManutencao(List<Manutencao> listaDeManutencao) {
+        this.listaDeManutencao = listaDeManutencao;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Equipamento {
             return false;
         if (!Objects.equals(descricao, that.descricao)) return false;
         if (!Objects.equals(estado, that.estado)) return false;
-        return Objects.equals(listaDeEquipamento, that.listaDeEquipamento);
+        return Objects.equals(listaDeManutencao, that.listaDeManutencao);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Equipamento {
         result = 31 * result + (tipoEquipamento != null ? tipoEquipamento.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
-        result = 31 * result + (listaDeEquipamento != null ? listaDeEquipamento.hashCode() : 0);
+        result = 31 * result + (listaDeManutencao != null ? listaDeManutencao.hashCode() : 0);
         return result;
     }
 
@@ -101,7 +101,7 @@ public class Equipamento {
                 ", tipoEquipamento='" + tipoEquipamento + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", estado='" + estado + '\'' +
-                ", listaDeEquipamento=" + listaDeEquipamento +
+                ", listaDeEquipamento=" + listaDeManutencao +
                 '}';
     }
 }
