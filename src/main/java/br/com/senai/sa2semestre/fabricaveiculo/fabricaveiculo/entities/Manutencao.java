@@ -20,8 +20,6 @@ public class Manutencao {
     private String estado;
 
 
-
-
     public Manutencao() {
     }
 
