@@ -9,22 +9,22 @@ import java.util.Objects;
 public class Pecas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iDPeca;
+    private Long idPecas;
     private String nome;
     private String descricao;
 
-    @OneToMany(mappedBy = "estoque")
+    @OneToMany(mappedBy = "pecas")
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "veiculosPecas")
+    @OneToMany(mappedBy = "pecas")
     private List<VeiculosPecas> listaDeVeiculoPecas;
-    @OneToMany(mappedBy = "producao")
+    @OneToMany(mappedBy = "pecas")
     private List<Producao> listaDeProducao;
 
     public Pecas() {
     }
 
     public Pecas(Long iDPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculosPecas> listaDeVeiculoPecas, List<Producao> listaDeProducao) {
-        this.iDPeca = iDPecas;
+        this.idPecas = iDPecas;
         this.nome = nome;
         this.descricao = descricao;
         this.listaDeEstoque = listaDeEstoque;
@@ -33,11 +33,11 @@ public class Pecas {
     }
 
     public Long getiIDPeca() {
-        return iDPeca;
+        return idPecas;
     }
 
     public void setiIDPeca(Long iDPecas) {
-        this.iDPeca = iDPecas;
+        this.idPecas = iDPecas;
     }
 
     public String getNome() {
@@ -87,7 +87,7 @@ public class Pecas {
 
         Pecas pecas = (Pecas) o;
 
-        if (!iDPeca.equals(pecas.iDPeca)) return false;
+        if (!idPecas.equals(pecas.idPecas)) return false;
         if (!Objects.equals(nome, pecas.nome)) return false;
         if (!Objects.equals(descricao, pecas.descricao)) return false;
         if (!Objects.equals(listaDeEstoque, pecas.listaDeEstoque))
@@ -99,7 +99,7 @@ public class Pecas {
 
     @Override
     public int hashCode() {
-        int result = iDPeca.hashCode();
+        int result = idPecas.hashCode();
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
@@ -111,7 +111,7 @@ public class Pecas {
     @Override
     public String toString() {
         return "Pecas{" +
-                "iDPecas=" + iDPeca +
+                "iDPecas=" + idPecas +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", listaDeEstoque=" + listaDeEstoque +

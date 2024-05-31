@@ -14,7 +14,7 @@ public class Veiculos {
     private Long ano;
     private String cor;
 
-    @OneToMany(mappedBy = "veiculospecas")
+    @OneToMany(mappedBy = "veiculos")
     private List<VeiculosPecas> listDeVeiculosPecas;
 
     public Veiculos() {

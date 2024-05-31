@@ -18,7 +18,7 @@ public class Producao {
     private Long quantidadeProduzida;
     private String estado;
 
-    @OneToMany(mappedBy = "qualiade")
+    @OneToMany(mappedBy = "producao")
     private List<Qualidade> listaDeQualidade;
 
     public Producao() {

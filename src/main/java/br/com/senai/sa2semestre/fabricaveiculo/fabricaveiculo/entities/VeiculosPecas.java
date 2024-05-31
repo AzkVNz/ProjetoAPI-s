@@ -11,7 +11,7 @@ public class VeiculosPecas {
     @JoinColumn(name = "chassi", referencedColumnName = "chassi" )
     private Veiculos veiculos;
     @ManyToOne
-    @JoinColumn(name = "idPeca", referencedColumnName = "idPeca")
+    @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
     private Long quantidade;
 

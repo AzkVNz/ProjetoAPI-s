@@ -8,9 +8,9 @@ import java.util.Objects;
 public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long iDEstoque;
+    private Long idEstoque;
     @ManyToOne
-    @JoinColumn(name = "idPeca", referencedColumnName = "idPeca")
+    @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
     private Long quantidadeDisponivel;
 
@@ -18,17 +18,17 @@ public class Estoque {
     }
 
     public Estoque(Long iDEstoque, Pecas pecas, Long quantidadeDisponivel) {
-        this.iDEstoque = iDEstoque;
+        this.idEstoque = iDEstoque;
         this.pecas = pecas;
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
     public Long getiDEstoque() {
-        return iDEstoque;
+        return idEstoque;
     }
 
     public void setiDEstoque(Long iDEstoque) {
-        this.iDEstoque = iDEstoque;
+        this.idEstoque = iDEstoque;
     }
 
     public Pecas getPecas() {
@@ -54,14 +54,14 @@ public class Estoque {
 
         Estoque estoque = (Estoque) o;
 
-        if (!iDEstoque.equals(estoque.iDEstoque)) return false;
+        if (!idEstoque.equals(estoque.idEstoque)) return false;
         if (!Objects.equals(pecas, estoque.pecas)) return false;
         return Objects.equals(quantidadeDisponivel, estoque.quantidadeDisponivel);
     }
 
     @Override
     public int hashCode() {
-        int result = iDEstoque.hashCode();
+        int result = idEstoque.hashCode();
         result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
         result = 31 * result + (quantidadeDisponivel != null ? quantidadeDisponivel.hashCode() : 0);
         return result;
@@ -70,7 +70,7 @@ public class Estoque {
     @Override
     public String toString() {
         return "Estoque{" +
-                "iDEstoque=" + iDEstoque +
+                "iDEstoque=" + idEstoque +
                 ", pecas=" + pecas +
                 ", quantidadeDisponivel=" + quantidadeDisponivel +
                 '}';
