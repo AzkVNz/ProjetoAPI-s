@@ -11,15 +11,15 @@ public class Estoque {
     private Long idEstoque;
     @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
-    private Pecas pecas;
+    private Peca peca;
     private Long quantidadeDisponivel;
 
     public Estoque() {
     }
 
-    public Estoque(Long iDEstoque, Pecas pecas, Long quantidadeDisponivel) {
+    public Estoque(Long iDEstoque, Peca peca, Long quantidadeDisponivel) {
         this.idEstoque = iDEstoque;
-        this.pecas = pecas;
+        this.peca = peca;
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
@@ -31,12 +31,12 @@ public class Estoque {
         this.idEstoque = iDEstoque;
     }
 
-    public Pecas getPecas() {
-        return pecas;
+    public Peca getPecas() {
+        return peca;
     }
 
-    public void setPecas(Pecas pecas) {
-        this.pecas = pecas;
+    public void setPecas(Peca peca) {
+        this.peca = peca;
     }
 
     public Long getQuantidadeDisponivel() {
@@ -55,14 +55,14 @@ public class Estoque {
         Estoque estoque = (Estoque) o;
 
         if (!idEstoque.equals(estoque.idEstoque)) return false;
-        if (!Objects.equals(pecas, estoque.pecas)) return false;
+        if (!Objects.equals(peca, estoque.peca)) return false;
         return Objects.equals(quantidadeDisponivel, estoque.quantidadeDisponivel);
     }
 
     @Override
     public int hashCode() {
         int result = idEstoque.hashCode();
-        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
+        result = 31 * result + (peca != null ? peca.hashCode() : 0);
         result = 31 * result + (quantidadeDisponivel != null ? quantidadeDisponivel.hashCode() : 0);
         return result;
     }
@@ -71,7 +71,7 @@ public class Estoque {
     public String toString() {
         return "Estoque{" +
                 "iDEstoque=" + idEstoque +
-                ", pecas=" + pecas +
+                ", pecas=" + peca +
                 ", quantidadeDisponivel=" + quantidadeDisponivel +
                 '}';
     }
