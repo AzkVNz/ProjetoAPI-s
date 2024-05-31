@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Veiculos {
+public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String chassi;
@@ -14,13 +14,13 @@ public class Veiculos {
     private Long ano;
     private String cor;
 
-    @OneToMany(mappedBy = "veiculos")
-    private List<VeiculosPecas> listDeVeiculosPecas;
+    @OneToMany(mappedBy = "veiculo")
+    private List<VeiculoPeca> listDeVeiculosPecas;
 
-    public Veiculos() {
+    public Veiculo() {
     }
 
-    public Veiculos(String chassi, String modelo, Long ano, String cor, List<VeiculosPecas> listDeVeiculosPecas) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculosPecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
@@ -60,11 +60,11 @@ public class Veiculos {
         this.cor = cor;
     }
 
-    public List<VeiculosPecas> getListDeVeiculosPecas() {
+    public List<VeiculoPeca> getListDeVeiculosPecas() {
         return listDeVeiculosPecas;
     }
 
-    public void setListDeVeiculosPecas(List<VeiculosPecas> listDeVeiculosPecas) {
+    public void setListDeVeiculosPecas(List<VeiculoPeca> listDeVeiculosPecas) {
         this.listDeVeiculosPecas = listDeVeiculosPecas;
     }
 
@@ -73,13 +73,13 @@ public class Veiculos {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Veiculos veiculos = (Veiculos) o;
+        Veiculo veiculo = (Veiculo) o;
 
-        if (!chassi.equals(veiculos.chassi)) return false;
-        if (!Objects.equals(modelo, veiculos.modelo)) return false;
-        if (!Objects.equals(ano, veiculos.ano)) return false;
-        if (!Objects.equals(cor, veiculos.cor)) return false;
-        return Objects.equals(listDeVeiculosPecas, veiculos.listDeVeiculosPecas);
+        if (!chassi.equals(veiculo.chassi)) return false;
+        if (!Objects.equals(modelo, veiculo.modelo)) return false;
+        if (!Objects.equals(ano, veiculo.ano)) return false;
+        if (!Objects.equals(cor, veiculo.cor)) return false;
+        return Objects.equals(listDeVeiculosPecas, veiculo.listDeVeiculosPecas);
     }
 
     @Override
