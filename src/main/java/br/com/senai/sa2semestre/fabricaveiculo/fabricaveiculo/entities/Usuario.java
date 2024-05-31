@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 import java.util.Objects;
 @Entity
-public class Usuarios {
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
@@ -17,9 +17,9 @@ public class Usuarios {
     private String perfi;
 
 
-    public Usuarios() {
+    public Usuario() {
     }
-    public Usuarios(long idUsuario, String nome, String email, String senha, String perfi) {
+    public Usuario(long idUsuario, String nome, String email, String senha, String perfi) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
@@ -72,13 +72,13 @@ public class Usuarios {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Usuarios usuarios = (Usuarios) o;
+        Usuario usuario = (Usuario) o;
 
-        if (!idUsuario.equals(usuarios.idUsuario)) return false;
-        if (!Objects.equals(nome, usuarios.nome)) return false;
-        if (!Objects.equals(email, usuarios.email)) return false;
-        if (!Objects.equals(senha, usuarios.senha)) return false;
-        return Objects.equals(perfi, usuarios.perfi);
+        if (!idUsuario.equals(usuario.idUsuario)) return false;
+        if (!Objects.equals(nome, usuario.nome)) return false;
+        if (!Objects.equals(email, usuario.email)) return false;
+        if (!Objects.equals(senha, usuario.senha)) return false;
+        return Objects.equals(perfi, usuario.perfi);
     }
 
     @Override
