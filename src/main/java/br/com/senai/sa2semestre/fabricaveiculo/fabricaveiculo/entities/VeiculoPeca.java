@@ -3,41 +3,41 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class VeiculosPecas {
+public class VeiculoPeca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @ManyToOne
     @JoinColumn(name = "chassi", referencedColumnName = "chassi" )
-    private Veiculos veiculos;
+    private Veiculo veiculo;
     @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
-    private Pecas pecas;
+    private Peca peca;
     private Long quantidade;
 
-    public VeiculosPecas() {
+    public VeiculoPeca() {
     }
 
-    public VeiculosPecas(Veiculos veiculos, Pecas pecas, Long quantidade) {
-        this.veiculos = veiculos;
-        this.pecas = pecas;
+    public VeiculoPeca(Veiculo veiculo, Peca peca, Long quantidade) {
+        this.veiculo = veiculo;
+        this.peca = peca;
         this.quantidade = quantidade;
     }
 
-    public Veiculos getVeiculos() {
-        return veiculos;
+    public Veiculo getVeiculos() {
+        return veiculo;
     }
 
-    public void setVeiculos(Veiculos veiculos) {
-        this.veiculos = veiculos;
+    public void setVeiculos(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public Pecas getPecas() {
-        return pecas;
+    public Peca getPecas() {
+        return peca;
     }
 
-    public void setPecas(Pecas pecas) {
-        this.pecas = pecas;
+    public void setPecas(Peca peca) {
+        this.peca = peca;
     }
 
     public Long getQuantidade() {
