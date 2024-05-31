@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Veiculos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idChassi;
+    private String chassi;
     private String modelo;
     private Long ano;
     private String cor;
@@ -21,7 +21,7 @@ public class Veiculos {
     }
 
     public Veiculos(String chassi, String modelo, Long ano, String cor, List<VeiculosPecas> listDeVeiculosPecas) {
-        this.idChassi = chassi;
+        this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
@@ -29,11 +29,11 @@ public class Veiculos {
     }
 
     public String getChassi() {
-        return idChassi;
+        return chassi;
     }
 
     public void setChassi(String chassi) {
-        this.idChassi = chassi;
+        this.chassi = chassi;
     }
 
     public String getModelo() {
@@ -75,7 +75,7 @@ public class Veiculos {
 
         Veiculos veiculos = (Veiculos) o;
 
-        if (!idChassi.equals(veiculos.idChassi)) return false;
+        if (!chassi.equals(veiculos.chassi)) return false;
         if (!Objects.equals(modelo, veiculos.modelo)) return false;
         if (!Objects.equals(ano, veiculos.ano)) return false;
         if (!Objects.equals(cor, veiculos.cor)) return false;
@@ -84,7 +84,7 @@ public class Veiculos {
 
     @Override
     public int hashCode() {
-        int result = idChassi.hashCode();
+        int result = chassi.hashCode();
         result = 31 * result + (modelo != null ? modelo.hashCode() : 0);
         result = 31 * result + (ano != null ? ano.hashCode() : 0);
         result = 31 * result + (cor != null ? cor.hashCode() : 0);
@@ -95,7 +95,7 @@ public class Veiculos {
     @Override
     public String toString() {
         return "Veiculos{" +
-                "chassi='" + idChassi + '\'' +
+                "chassi='" + chassi + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
                 ", cor='" + cor + '\'' +

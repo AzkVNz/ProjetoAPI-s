@@ -8,7 +8,7 @@ public class VeiculosPecas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @ManyToOne
-    @JoinColumn(name = "idChassi", referencedColumnName = "idChassi" )
+    @JoinColumn(name = "chassi", referencedColumnName = "chassi" )
     private Veiculos veiculos;
     @ManyToOne
     @JoinColumn(name = "idPeca", referencedColumnName = "idPeca")
