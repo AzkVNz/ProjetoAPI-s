@@ -9,35 +9,35 @@ import java.util.Objects;
 public class Peca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPecas;
+    private Long idPeca;
     private String nome;
     private String descricao;
 
     @OneToMany(mappedBy = "peca")
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "peca")
-    private List<VeiculoPeca> listaDeVeiculoPecas;
+    @OneToMany(mappedBy = "idPeca")
+    private List<VeiculoPeca> listaDeVeiculoPeca;
     @OneToMany(mappedBy = "peca")
     private List<Producao> listaDeProducao;
 
     public Peca() {
     }
 
-    public Peca(Long iDPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculoPeca> listaDeVeiculoPecas, List<Producao> listaDeProducao) {
-        this.idPecas = iDPecas;
+    public Peca(Long iDPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculoPeca> listaDeVeiculoPeca, List<Producao> listaDeProducao) {
+        this.idPeca = iDPecas;
         this.nome = nome;
         this.descricao = descricao;
         this.listaDeEstoque = listaDeEstoque;
-        this.listaDeVeiculoPecas = listaDeVeiculoPecas;
+        this.listaDeVeiculoPeca = listaDeVeiculoPeca;
         this.listaDeProducao = listaDeProducao;
     }
 
     public Long getiIDPeca() {
-        return idPecas;
+        return idPeca;
     }
 
     public void setiIDPeca(Long iDPecas) {
-        this.idPecas = iDPecas;
+        this.idPeca = iDPecas;
     }
 
     public String getNome() {
@@ -64,12 +64,12 @@ public class Peca {
         this.listaDeEstoque = listaDeEstoque;
     }
 
-    public List<VeiculoPeca> getListaDeVeiculoPecas() {
-        return listaDeVeiculoPecas;
+    public List<VeiculoPeca> getListaDeVeiculoPeca() {
+        return listaDeVeiculoPeca;
     }
 
-    public void setListaDeVeiculoPecas(List<VeiculoPeca> listaDeVeiculoPecas) {
-        this.listaDeVeiculoPecas = listaDeVeiculoPecas;
+    public void setListaDeVeiculoPeca(List<VeiculoPeca> listaDeVeiculoPeca) {
+        this.listaDeVeiculoPeca = listaDeVeiculoPeca;
     }
 
     public List<Producao> getListaDeProducao() {
@@ -87,23 +87,23 @@ public class Peca {
 
         Peca peca = (Peca) o;
 
-        if (!idPecas.equals(peca.idPecas)) return false;
+        if (!idPeca.equals(peca.idPeca)) return false;
         if (!Objects.equals(nome, peca.nome)) return false;
         if (!Objects.equals(descricao, peca.descricao)) return false;
         if (!Objects.equals(listaDeEstoque, peca.listaDeEstoque))
             return false;
-        if (!Objects.equals(listaDeVeiculoPecas, peca.listaDeVeiculoPecas))
+        if (!Objects.equals(listaDeVeiculoPeca, peca.listaDeVeiculoPeca))
             return false;
         return Objects.equals(listaDeProducao, peca.listaDeProducao);
     }
 
     @Override
     public int hashCode() {
-        int result = idPecas.hashCode();
+        int result = idPeca.hashCode();
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
-        result = 31 * result + (listaDeVeiculoPecas != null ? listaDeVeiculoPecas.hashCode() : 0);
+        result = 31 * result + (listaDeVeiculoPeca != null ? listaDeVeiculoPeca.hashCode() : 0);
         result = 31 * result + (listaDeProducao != null ? listaDeProducao.hashCode() : 0);
         return result;
     }
@@ -111,11 +111,11 @@ public class Peca {
     @Override
     public String toString() {
         return "Pecas{" +
-                "iDPecas=" + idPecas +
+                "iDPecas=" + idPeca +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", listaDeEstoque=" + listaDeEstoque +
-                ", listaDeVeiculoPecas=" + listaDeVeiculoPecas +
+                ", listaDeVeiculoPecas=" + listaDeVeiculoPeca +
                 ", listaDeProducao=" + listaDeProducao +
                 '}';
     }
