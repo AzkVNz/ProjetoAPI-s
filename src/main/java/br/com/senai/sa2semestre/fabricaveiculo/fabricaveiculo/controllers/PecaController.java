@@ -37,7 +37,7 @@ public class PecaController {
     public ResponseEntity<Peca> uptadePeca(@PathVariable Long id, @RequestBody Peca pecaAtualizada) {
         Optional<Peca> pecaExistente = pecaRepository.findById(id);
         if (pecaExistente.isPresent()) {
-            pecaAtualizada.setiIDPeca(id);
+            pecaAtualizada.setIdPecas(id);
             return ResponseEntity.ok(pecaRepository.save(pecaAtualizada));
         } else {
             return ResponseEntity.notFound().build();
