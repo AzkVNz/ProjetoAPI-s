@@ -13,18 +13,18 @@ public class Veiculo {
     private Long ano;
     private String cor;
 
-    @OneToMany(mappedBy = "chassi")
-    private List<VeiculoPeca> listDeVeiculosPeca;
+    @OneToMany(mappedBy = "veiculo")
+    private List<VeiculoPeca> listDeVeiculoPeca;
 
     public Veiculo() {
     }
 
-    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculosPeca) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculoPeca) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
-        this.listDeVeiculosPeca = listDeVeiculosPeca;
+        this.listDeVeiculoPeca = listDeVeiculoPeca;
     }
 
     public String getChassi() {
@@ -59,12 +59,12 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public List<VeiculoPeca> getListDeVeiculosPeca() {
-        return listDeVeiculosPeca;
+    public List<VeiculoPeca> getListDeVeiculoPeca() {
+        return listDeVeiculoPeca;
     }
 
-    public void setListDeVeiculosPeca(List<VeiculoPeca> listDeVeiculosPeca) {
-        this.listDeVeiculosPeca = listDeVeiculosPeca;
+    public void setListDeVeiculoPeca(List<VeiculoPeca> listDeVeiculosPeca) {
+        this.listDeVeiculoPeca = listDeVeiculosPeca;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Veiculo {
         if (!Objects.equals(modelo, veiculo.modelo)) return false;
         if (!Objects.equals(ano, veiculo.ano)) return false;
         if (!Objects.equals(cor, veiculo.cor)) return false;
-        return Objects.equals(listDeVeiculosPeca, veiculo.listDeVeiculosPeca);
+        return Objects.equals(listDeVeiculoPeca, veiculo.listDeVeiculoPeca);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Veiculo {
         result = 31 * result + (modelo != null ? modelo.hashCode() : 0);
         result = 31 * result + (ano != null ? ano.hashCode() : 0);
         result = 31 * result + (cor != null ? cor.hashCode() : 0);
-        result = 31 * result + (listDeVeiculosPeca != null ? listDeVeiculosPeca.hashCode() : 0);
+        result = 31 * result + (listDeVeiculoPeca != null ? listDeVeiculoPeca.hashCode() : 0);
         return result;
     }
 
@@ -98,7 +98,7 @@ public class Veiculo {
                 ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
                 ", cor='" + cor + '\'' +
-                ", listDeVeiculosPecas=" + listDeVeiculosPeca +
+                ", listDeVeiculosPecas=" + listDeVeiculoPeca +
                 '}';
     }
 }
