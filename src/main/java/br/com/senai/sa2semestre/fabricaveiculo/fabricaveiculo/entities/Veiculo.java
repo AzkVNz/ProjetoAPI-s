@@ -2,10 +2,13 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name = "veiculo")
 public class Veiculo {
     @Id
     private String chassi;
@@ -13,18 +16,23 @@ public class Veiculo {
     private Long ano;
     private String cor;
 
-    @OneToMany(mappedBy = "veiculo")
-    private List<VeiculoPeca> listDeVeiculoPeca;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "Veiculos_Pecas",
+            joinColumns = {@JoinColumn(name = "chassi")},
+            inverseJoinColumns = {@JoinColumn(name = "idPecas")}
+    )
+    private Set<Peca> pecas = new HashSet<>();
 
     public Veiculo() {
     }
 
-    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculoPeca) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, Set<Peca> pecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
-        this.listDeVeiculoPeca = listDeVeiculoPeca;
+        this.pecas = pecas;
     }
 
     public String getChassi() {
@@ -59,12 +67,12 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public List<VeiculoPeca> getListDeVeiculoPeca() {
-        return listDeVeiculoPeca;
+    public Set<Peca> getPecas() {
+        return pecas;
     }
 
-    public void setListDeVeiculoPeca(List<VeiculoPeca> listDeVeiculosPeca) {
-        this.listDeVeiculoPeca = listDeVeiculosPeca;
+    public void setPecas(Set<Peca> pecas) {
+        this.pecas = pecas;
     }
 
     @Override
@@ -78,7 +86,7 @@ public class Veiculo {
         if (!Objects.equals(modelo, veiculo.modelo)) return false;
         if (!Objects.equals(ano, veiculo.ano)) return false;
         if (!Objects.equals(cor, veiculo.cor)) return false;
-        return Objects.equals(listDeVeiculoPeca, veiculo.listDeVeiculoPeca);
+        return Objects.equals(pecas, veiculo.pecas);
     }
 
     @Override
@@ -87,18 +95,18 @@ public class Veiculo {
         result = 31 * result + (modelo != null ? modelo.hashCode() : 0);
         result = 31 * result + (ano != null ? ano.hashCode() : 0);
         result = 31 * result + (cor != null ? cor.hashCode() : 0);
-        result = 31 * result + (listDeVeiculoPeca != null ? listDeVeiculoPeca.hashCode() : 0);
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Veiculos{" +
+        return "Veiculo{" +
                 "chassi='" + chassi + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
                 ", cor='" + cor + '\'' +
-                ", listDeVeiculosPecas=" + listDeVeiculoPeca +
+                ", pecas=" + pecas +
                 '}';
     }
 }
