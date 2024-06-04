@@ -9,13 +9,13 @@ import java.util.Objects;
 public class Peca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPeca;
+    private Long idPecas;
     private String nome;
     private String descricao;
 
     @OneToMany(mappedBy = "peca")
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "idPeca")
+    @OneToMany(mappedBy = "peca")
     private List<VeiculoPeca> listaDeVeiculoPeca;
     @OneToMany(mappedBy = "peca")
     private List<Producao> listaDeProducao;
@@ -23,8 +23,8 @@ public class Peca {
     public Peca() {
     }
 
-    public Peca(Long iDPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculoPeca> listaDeVeiculoPeca, List<Producao> listaDeProducao) {
-        this.idPeca = iDPecas;
+    public Peca(Long idPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculoPeca> listaDeVeiculoPeca, List<Producao> listaDeProducao) {
+        this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
         this.listaDeEstoque = listaDeEstoque;
@@ -33,11 +33,11 @@ public class Peca {
     }
 
     public Long getiIDPeca() {
-        return idPeca;
+        return idPecas;
     }
 
-    public void setiIDPeca(Long iDPecas) {
-        this.idPeca = iDPecas;
+    public void setiIDPeca(Long idPeca) {
+        this.idPecas = idPeca;
     }
 
     public String getNome() {
@@ -87,7 +87,7 @@ public class Peca {
 
         Peca peca = (Peca) o;
 
-        if (!idPeca.equals(peca.idPeca)) return false;
+        if (!idPecas.equals(peca.idPecas)) return false;
         if (!Objects.equals(nome, peca.nome)) return false;
         if (!Objects.equals(descricao, peca.descricao)) return false;
         if (!Objects.equals(listaDeEstoque, peca.listaDeEstoque))
@@ -99,7 +99,7 @@ public class Peca {
 
     @Override
     public int hashCode() {
-        int result = idPeca.hashCode();
+        int result = idPecas.hashCode();
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
         result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
@@ -110,12 +110,12 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "Pecas{" +
-                "iDPecas=" + idPeca +
+        return "Peca{" +
+                "idPeca=" + idPecas +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", listaDeEstoque=" + listaDeEstoque +
-                ", listaDeVeiculoPecas=" + listaDeVeiculoPeca +
+                ", listaDeVeiculoPeca=" + listaDeVeiculoPeca +
                 ", listaDeProducao=" + listaDeProducao +
                 '}';
     }
