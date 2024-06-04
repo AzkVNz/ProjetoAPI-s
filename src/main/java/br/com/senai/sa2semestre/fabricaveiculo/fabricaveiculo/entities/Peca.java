@@ -2,8 +2,10 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Peca {
@@ -12,32 +14,33 @@ public class Peca {
     private Long idPecas;
     private String nome;
     private String descricao;
-
+    private Long Quantidade;
     @OneToMany(mappedBy = "peca")
     private List<Estoque> listaDeEstoque;
     @OneToMany(mappedBy = "peca")
-    private List<VeiculoPeca> listaDeVeiculoPeca;
-    @OneToMany(mappedBy = "peca")
     private List<Producao> listaDeProducao;
+    @ManyToMany(mappedBy = "pecas")
+    private Set<Veiculo> veiculos = new HashSet<>();
 
     public Peca() {
     }
 
-    public Peca(Long idPecas, String nome, String descricao, List<Estoque> listaDeEstoque, List<VeiculoPeca> listaDeVeiculoPeca, List<Producao> listaDeProducao) {
+    public Peca(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
+        Quantidade = quantidade;
         this.listaDeEstoque = listaDeEstoque;
-        this.listaDeVeiculoPeca = listaDeVeiculoPeca;
         this.listaDeProducao = listaDeProducao;
+        this.veiculos = veiculos;
     }
 
-    public Long getiIDPeca() {
+    public Long getIdPecas() {
         return idPecas;
     }
 
-    public void setiIDPeca(Long idPeca) {
-        this.idPecas = idPeca;
+    public void setIdPecas(Long idPecas) {
+        this.idPecas = idPecas;
     }
 
     public String getNome() {
@@ -56,6 +59,14 @@ public class Peca {
         this.descricao = descricao;
     }
 
+    public Long getQuantidade() {
+        return Quantidade;
+    }
+
+    public void setQuantidade(Long quantidade) {
+        Quantidade = quantidade;
+    }
+
     public List<Estoque> getListaDeEstoque() {
         return listaDeEstoque;
     }
@@ -64,20 +75,20 @@ public class Peca {
         this.listaDeEstoque = listaDeEstoque;
     }
 
-    public List<VeiculoPeca> getListaDeVeiculoPeca() {
-        return listaDeVeiculoPeca;
-    }
-
-    public void setListaDeVeiculoPeca(List<VeiculoPeca> listaDeVeiculoPeca) {
-        this.listaDeVeiculoPeca = listaDeVeiculoPeca;
-    }
-
     public List<Producao> getListaDeProducao() {
         return listaDeProducao;
     }
 
     public void setListaDeProducao(List<Producao> listaDeProducao) {
         this.listaDeProducao = listaDeProducao;
+    }
+
+    public Set<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(Set<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 
     @Override
@@ -90,11 +101,12 @@ public class Peca {
         if (!idPecas.equals(peca.idPecas)) return false;
         if (!Objects.equals(nome, peca.nome)) return false;
         if (!Objects.equals(descricao, peca.descricao)) return false;
+        if (!Objects.equals(Quantidade, peca.Quantidade)) return false;
         if (!Objects.equals(listaDeEstoque, peca.listaDeEstoque))
             return false;
-        if (!Objects.equals(listaDeVeiculoPeca, peca.listaDeVeiculoPeca))
+        if (!Objects.equals(listaDeProducao, peca.listaDeProducao))
             return false;
-        return Objects.equals(listaDeProducao, peca.listaDeProducao);
+        return Objects.equals(veiculos, peca.veiculos);
     }
 
     @Override
@@ -102,21 +114,23 @@ public class Peca {
         int result = idPecas.hashCode();
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (descricao != null ? descricao.hashCode() : 0);
+        result = 31 * result + (Quantidade != null ? Quantidade.hashCode() : 0);
         result = 31 * result + (listaDeEstoque != null ? listaDeEstoque.hashCode() : 0);
-        result = 31 * result + (listaDeVeiculoPeca != null ? listaDeVeiculoPeca.hashCode() : 0);
         result = 31 * result + (listaDeProducao != null ? listaDeProducao.hashCode() : 0);
+        result = 31 * result + (veiculos != null ? veiculos.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Peca{" +
-                "idPeca=" + idPecas +
+                "idPecas=" + idPecas +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
+                ", Quantidade=" + Quantidade +
                 ", listaDeEstoque=" + listaDeEstoque +
-                ", listaDeVeiculoPeca=" + listaDeVeiculoPeca +
                 ", listaDeProducao=" + listaDeProducao +
+                ", veiculos=" + veiculos +
                 '}';
     }
 }
