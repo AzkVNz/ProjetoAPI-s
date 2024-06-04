@@ -13,7 +13,7 @@ public class VeiculoPeca {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVeiculoPecas;
     @ManyToOne
-    @JoinColumn(name = "idPeca", referencedColumnName = "idPeca")
+    @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
     private Peca peca;
     @ManyToOne
     @JoinColumn(name = "chassi", referencedColumnName = "chassi")
