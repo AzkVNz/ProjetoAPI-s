@@ -8,24 +8,23 @@ import java.util.Objects;
 @Entity
 public class Veiculo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String chassi;
     private String modelo;
     private Long ano;
     private String cor;
 
-    @OneToMany(mappedBy = "veiculo")
-    private List<VeiculoPeca> listDeVeiculosPecas;
+    @OneToMany(mappedBy = "chassi")
+    private List<VeiculoPeca> listDeVeiculosPeca;
 
     public Veiculo() {
     }
 
-    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculosPecas) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, List<VeiculoPeca> listDeVeiculosPeca) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
-        this.listDeVeiculosPecas = listDeVeiculosPecas;
+        this.listDeVeiculosPeca = listDeVeiculosPeca;
     }
 
     public String getChassi() {
@@ -60,12 +59,12 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public List<VeiculoPeca> getListDeVeiculosPecas() {
-        return listDeVeiculosPecas;
+    public List<VeiculoPeca> getListDeVeiculosPeca() {
+        return listDeVeiculosPeca;
     }
 
-    public void setListDeVeiculosPecas(List<VeiculoPeca> listDeVeiculosPecas) {
-        this.listDeVeiculosPecas = listDeVeiculosPecas;
+    public void setListDeVeiculosPeca(List<VeiculoPeca> listDeVeiculosPeca) {
+        this.listDeVeiculosPeca = listDeVeiculosPeca;
     }
 
     @Override
@@ -79,7 +78,7 @@ public class Veiculo {
         if (!Objects.equals(modelo, veiculo.modelo)) return false;
         if (!Objects.equals(ano, veiculo.ano)) return false;
         if (!Objects.equals(cor, veiculo.cor)) return false;
-        return Objects.equals(listDeVeiculosPecas, veiculo.listDeVeiculosPecas);
+        return Objects.equals(listDeVeiculosPeca, veiculo.listDeVeiculosPeca);
     }
 
     @Override
@@ -88,7 +87,7 @@ public class Veiculo {
         result = 31 * result + (modelo != null ? modelo.hashCode() : 0);
         result = 31 * result + (ano != null ? ano.hashCode() : 0);
         result = 31 * result + (cor != null ? cor.hashCode() : 0);
-        result = 31 * result + (listDeVeiculosPecas != null ? listDeVeiculosPecas.hashCode() : 0);
+        result = 31 * result + (listDeVeiculosPeca != null ? listDeVeiculosPeca.hashCode() : 0);
         return result;
     }
 
@@ -99,7 +98,7 @@ public class Veiculo {
                 ", modelo='" + modelo + '\'' +
                 ", ano=" + ano +
                 ", cor='" + cor + '\'' +
-                ", listDeVeiculosPecas=" + listDeVeiculosPecas +
+                ", listDeVeiculosPecas=" + listDeVeiculosPeca +
                 '}';
     }
 }
