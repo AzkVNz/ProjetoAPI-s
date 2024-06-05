@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/producoes")
+@RequestMapping("/producao")
 public class ProducaoControler {
 
     @Autowired
@@ -29,7 +29,7 @@ public class ProducaoControler {
     }
 
     @PostMapping
-    Producao createProducao(@RequestBody Producao producao) {
+    public Producao createProducao(@RequestBody Producao producao) {
         return producaoRepository.save(producao);
     }
 
