@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 
 @RestController
-@RequestMapping("/manutencoes")
+@RequestMapping("/manutencao")
 public class ManutencaoController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class ManutencaoController {
     }
 
     @PostMapping
-    Manutencao createManutencao(@RequestBody Manutencao manutencao) {
+    public Manutencao createManutencao(@RequestBody Manutencao manutencao) {
         return manutencaoRepository.save(manutencao);
     }
 
