@@ -29,7 +29,7 @@ public class EstoqueController {
     }
 
     @PostMapping
-    Estoque createEstoque(@RequestBody Estoque estoque) {
+    public Estoque createEstoque(@RequestBody Estoque estoque) {
         return estoqueRepository.save(estoque);
     }
 
