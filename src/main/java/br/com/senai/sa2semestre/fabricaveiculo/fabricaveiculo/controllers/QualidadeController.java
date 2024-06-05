@@ -1,0 +1,61 @@
+package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
+
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Peca;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Qualidade;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.QualidadeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+
+@RestController
+@RequestMapping("/qualidade")
+public class QualidadeController {
+
+    @Autowired
+    private QualidadeRepository qualidadeRepository;
+
+
+    @GetMapping
+    public List<Qualidade> getAllQualiade() {
+        return qualidadeRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Qualidade> getQualidadeById(@PathVariable Long id) {
+        Optional<Qualidade> qualidadeBuscada = qualidadeRepository.findById(id);
+        return qualidadeBuscada.map(ResponseEntity::ok).orElseGet(() ->
+                ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public Qualidade createQualidade(@RequestBody Qualidade qualidade) {
+        return qualidadeRepository.save(qualidade);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Qualidade> uptadeQualidade(@PathVariable Long id, @RequestBody Qualidade qualidadeComDadosAtualizados) {
+        Optional<Qualidade> qualidadeExistente = qualidadeRepository.findById(id);
+        if (qualidadeExistente.isPresent()) {
+            qualidadeComDadosAtualizados.setIdInspecao(id);
+            return ResponseEntity.ok(qualidadeRepository.save(qualidadeComDadosAtualizados));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePeca(@PathVariable Long id) {
+        Optional<Qualidade> qualidadeParaExcluir = qualidadeRepository.findById(id);
+        if (qualidadeParaExcluir.isPresent()) {
+            qualidadeRepository.delete(qualidadeParaExcluir.get());
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+}
