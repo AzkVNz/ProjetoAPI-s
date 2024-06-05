@@ -29,7 +29,7 @@ public class PecaController {
     }
 
     @PostMapping
-    Peca createPeca(@RequestBody Peca peca) {
+    public Peca createPeca(@RequestBody Peca peca) {
         return pecaRepository.save(peca);
     }
 
