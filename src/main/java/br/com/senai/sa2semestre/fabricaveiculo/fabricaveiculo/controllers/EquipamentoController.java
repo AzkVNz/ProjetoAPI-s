@@ -49,7 +49,7 @@ public class EquipamentoController {
      * @return o equipamento criado.
      */
     @PostMapping
-    Equipamento createEquipamento(@RequestBody Equipamento equipamento) {
+    public Equipamento createEquipamento(@RequestBody Equipamento equipamento) {
         return equipamentoRepository.save(equipamento);
     }
 
