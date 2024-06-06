@@ -2,6 +2,7 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Estoque;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.EstoqueRepository;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
