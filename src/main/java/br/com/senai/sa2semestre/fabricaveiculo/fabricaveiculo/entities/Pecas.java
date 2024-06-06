@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -8,24 +9,27 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Peca {
+public class Pecas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPecas;
     private String nome;
     private String descricao;
     private Long Quantidade;
-    @OneToMany(mappedBy = "peca")
+    @OneToMany(mappedBy = "pecas")
+    @JsonIgnore
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "peca")
+    @OneToMany(mappedBy = "pecas")
+    @JsonIgnore
     private List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
+    @JsonIgnore
     private Set<Veiculo> veiculos = new HashSet<>();
 
-    public Peca() {
+    public Pecas() {
     }
 
-    public Peca(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
+    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
@@ -96,17 +100,17 @@ public class Peca {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Peca peca = (Peca) o;
+        Pecas pecas = (Pecas) o;
 
-        if (!idPecas.equals(peca.idPecas)) return false;
-        if (!Objects.equals(nome, peca.nome)) return false;
-        if (!Objects.equals(descricao, peca.descricao)) return false;
-        if (!Objects.equals(Quantidade, peca.Quantidade)) return false;
-        if (!Objects.equals(listaDeEstoque, peca.listaDeEstoque))
+        if (!idPecas.equals(pecas.idPecas)) return false;
+        if (!Objects.equals(nome, pecas.nome)) return false;
+        if (!Objects.equals(descricao, pecas.descricao)) return false;
+        if (!Objects.equals(Quantidade, pecas.Quantidade)) return false;
+        if (!Objects.equals(listaDeEstoque, pecas.listaDeEstoque))
             return false;
-        if (!Objects.equals(listaDeProducao, peca.listaDeProducao))
+        if (!Objects.equals(listaDeProducao, pecas.listaDeProducao))
             return false;
-        return Objects.equals(veiculos, peca.veiculos);
+        return Objects.equals(veiculos, pecas.veiculos);
     }
 
     @Override
@@ -123,14 +127,10 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "Peca{" +
-                "idPecas=" + idPecas +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", Quantidade=" + Quantidade +
-                ", listaDeEstoque=" + listaDeEstoque +
-                ", listaDeProducao=" + listaDeProducao +
-                ", veiculos=" + veiculos +
-                '}';
+        return
+                "Id da peeça: " + idPecas +
+                "Nome da peça: " + nome + '\'' +
+                "Descrição da peça: " + descricao + '\'' +
+                "Quantidade: " + Quantidade;
     }
 }
