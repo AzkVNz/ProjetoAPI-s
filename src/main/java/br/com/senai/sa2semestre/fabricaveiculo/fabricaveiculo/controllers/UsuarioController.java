@@ -1,7 +1,5 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
-import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Peca;
-import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Qualidade;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Usuario;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
