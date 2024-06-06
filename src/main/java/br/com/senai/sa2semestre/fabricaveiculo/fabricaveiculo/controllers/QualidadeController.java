@@ -1,6 +1,5 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
-import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Peca;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Qualidade;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.QualidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @RestController
 @RequestMapping("/qualidade")
