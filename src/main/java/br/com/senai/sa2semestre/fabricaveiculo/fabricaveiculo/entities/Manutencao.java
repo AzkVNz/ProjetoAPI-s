@@ -1,6 +1,9 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -16,6 +19,7 @@ public class Manutencao {
     private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
+
     private String descricaoServico;
     private String estado;
 
