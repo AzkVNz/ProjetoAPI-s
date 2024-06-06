@@ -1,5 +1,6 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -13,12 +14,13 @@ public class Producao {
     private Long idProducao;
     @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
-    private Peca peca;
+    private Pecas pecas;
     private LocalDateTime dataHora;
     private Long quantidadeProduzida;
     private String estado;
 
     @OneToMany(mappedBy = "producao")
+    @JsonIgnore
     private List<Qualidade> listaDeQualidade;
 
     public Producao() {
@@ -32,12 +34,12 @@ public class Producao {
         this.idProducao = idProducao;
     }
 
-    public Peca getPecas() {
-        return peca;
+    public Pecas getPecas() {
+        return pecas;
     }
 
-    public void setPecas(Peca peca) {
-        this.peca = peca;
+    public void setPecas(Pecas pecas) {
+        this.pecas = pecas;
     }
 
     public LocalDateTime getDataHora() {
@@ -80,7 +82,7 @@ public class Producao {
         Producao producao = (Producao) o;
 
         if (!idProducao.equals(producao.idProducao)) return false;
-        if (!Objects.equals(peca, producao.peca)) return false;
+        if (!Objects.equals(pecas, producao.pecas)) return false;
         if (!Objects.equals(dataHora, producao.dataHora)) return false;
         if (!Objects.equals(quantidadeProduzida, producao.quantidadeProduzida))
             return false;
@@ -91,7 +93,7 @@ public class Producao {
     @Override
     public int hashCode() {
         int result = idProducao.hashCode();
-        result = 31 * result + (peca != null ? peca.hashCode() : 0);
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
         result = 31 * result + (dataHora != null ? dataHora.hashCode() : 0);
         result = 31 * result + (quantidadeProduzida != null ? quantidadeProduzida.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
@@ -103,7 +105,7 @@ public class Producao {
     public String toString() {
         return "Producao{" +
                 "idProducao=" + idProducao +
-                ", pecas=" + peca +
+                ", pecas=" + pecas +
                 ", dataHora=" + dataHora +
                 ", quantidadeProduzida=" + quantidadeProduzida +
                 ", estado='" + estado + '\'' +
