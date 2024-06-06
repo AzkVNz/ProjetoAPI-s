@@ -29,7 +29,7 @@ public class VeiculoController {
                 ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/{chassi}")
+    @PostMapping
     public Veiculo createVeiculo(@RequestBody Veiculo veiculo) {
         return veiculoRepository.save(veiculo);
     }

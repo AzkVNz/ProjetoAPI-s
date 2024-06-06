@@ -8,30 +8,38 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 @Entity
 public class Usuario {
+
+    public enum Perfil {
+        ADMIN,
+        USER,
+        GUEST
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
     private String nome;
     private String email;
     private String senha;
-    private String perfi;
+    private Perfil perfil;
 
 
     public Usuario() {
     }
-    public Usuario(long idUsuario, String nome, String email, String senha, String perfi) {
+
+    public Usuario(Long idUsuario, String nome, String email, String senha, Perfil perfil) {
         this.idUsuario = idUsuario;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.perfi = perfi;
+        this.perfil = perfil;
     }
 
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -59,12 +67,12 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getPerfi() {
-        return perfi;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setPerfi(String perfi) {
-        this.perfi = perfi;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     @Override
@@ -78,7 +86,7 @@ public class Usuario {
         if (!Objects.equals(nome, usuario.nome)) return false;
         if (!Objects.equals(email, usuario.email)) return false;
         if (!Objects.equals(senha, usuario.senha)) return false;
-        return Objects.equals(perfi, usuario.perfi);
+        return perfil == usuario.perfil;
     }
 
     @Override
@@ -87,18 +95,18 @@ public class Usuario {
         result = 31 * result + (nome != null ? nome.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (senha != null ? senha.hashCode() : 0);
-        result = 31 * result + (perfi != null ? perfi.hashCode() : 0);
+        result = 31 * result + (perfil != null ? perfil.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Usuarios{" +
+        return "Usuario{" +
                 "idUsuario=" + idUsuario +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", perfi='" + perfi + '\'' +
+                ", perfil=" + perfil +
                 '}';
     }
 }
