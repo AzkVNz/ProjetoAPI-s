@@ -3,7 +3,6 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,12 +21,12 @@ public class Veiculo {
             joinColumns = {@JoinColumn(name = "chassi")},
             inverseJoinColumns = {@JoinColumn(name = "idPecas")}
     )
-    private Set<Peca> pecas = new HashSet<>();
+    private Set<Pecas> pecas = new HashSet<>();
 
     public Veiculo() {
     }
 
-    public Veiculo(String chassi, String modelo, Long ano, String cor, Set<Peca> pecas) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, Set<Pecas> pecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
@@ -67,11 +66,11 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public Set<Peca> getPecas() {
+    public Set<Pecas> getPecas() {
         return pecas;
     }
 
-    public void setPecas(Set<Peca> pecas) {
+    public void setPecas(Set<Pecas> pecas) {
         this.pecas = pecas;
     }
 
