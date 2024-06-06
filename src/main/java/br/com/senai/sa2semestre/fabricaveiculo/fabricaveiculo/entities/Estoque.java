@@ -11,15 +11,15 @@ public class Estoque {
     private Long idEstoque;
     @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
-    private Peca peca;
+    private Pecas pecas;
     private Long quantidadeDisponivel;
 
     public Estoque() {
     }
 
-    public Estoque(Long iDEstoque, Peca peca, Long quantidadeDisponivel) {
+    public Estoque(Long iDEstoque, Pecas pecas, Long quantidadeDisponivel) {
         this.idEstoque = iDEstoque;
-        this.peca = peca;
+        this.pecas = pecas;
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
@@ -31,12 +31,12 @@ public class Estoque {
         this.idEstoque = iDEstoque;
     }
 
-    public Peca getPecas() {
-        return peca;
+    public Pecas getPecas() {
+        return pecas;
     }
 
-    public void setPecas(Peca peca) {
-        this.peca = peca;
+    public void setPecas(Pecas pecas) {
+        this.pecas = pecas;
     }
 
     public Long getQuantidadeDisponivel() {
@@ -55,24 +55,22 @@ public class Estoque {
         Estoque estoque = (Estoque) o;
 
         if (!idEstoque.equals(estoque.idEstoque)) return false;
-        if (!Objects.equals(peca, estoque.peca)) return false;
+        if (!Objects.equals(pecas, estoque.pecas)) return false;
         return Objects.equals(quantidadeDisponivel, estoque.quantidadeDisponivel);
     }
 
     @Override
     public int hashCode() {
         int result = idEstoque.hashCode();
-        result = 31 * result + (peca != null ? peca.hashCode() : 0);
+        result = 31 * result + (pecas != null ? pecas.hashCode() : 0);
         result = 31 * result + (quantidadeDisponivel != null ? quantidadeDisponivel.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Estoque{" +
-                "iDEstoque=" + idEstoque +
-                ", pecas=" + peca +
-                ", quantidadeDisponivel=" + quantidadeDisponivel +
-                '}';
+        return "ID do estoque: " + idEstoque +
+                "ID da peça para adicionar:" + pecas +
+                "Quantidade disponível: ";
     }
 }
