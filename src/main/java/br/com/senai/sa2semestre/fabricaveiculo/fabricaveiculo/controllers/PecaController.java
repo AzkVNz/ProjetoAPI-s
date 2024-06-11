@@ -1,7 +1,13 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Equipamento;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Estoque;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Manutencao;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Pecas;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.EstoqueRepository;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.PecaRepository;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.ProducaoRepository;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.QualidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +21,15 @@ public class PecaController {
 
     @Autowired
     private PecaRepository pecaRepository;
+
+    @Autowired
+    private EstoqueRepository estoqueRepository;
+
+    @Autowired
+    private ProducaoRepository producaoRepository;
+
+    @Autowired
+    private QualidadeRepository qualidadeRepository;
 
     @GetMapping
     public List<Pecas> getAllPeca() {
@@ -45,11 +60,21 @@ public class PecaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePeca(@PathVariable Long id) {
-        Optional<Pecas> pecaParaExluir = pecaRepository.findById(id);
-        if (pecaParaExluir.isPresent()) {
-            pecaRepository.delete(pecaParaExluir.get());
-            return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteEquipamento(@PathVariable Long id) {
+        Optional<Pecas> pecasParaDeletar = pecaRepository.findById(id);
+
+        if (pecasParaDeletar.isPresent()) {
+            Pecas pecas = pecasParaDeletar.get();
+
+            // Excluir todas as manutenções associadas ao equipamento
+            for (Estoque estoque : equipamento.getListaDeManutencao() && ) {
+                manutencaoRepository.delete(manutencao);
+            }
+
+            // Excluir o equipamento após excluir as manutenções associadas
+            equipamentoRepository.delete(equipamento);
+
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
