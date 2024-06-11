@@ -1,7 +1,9 @@
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Equipamento;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Manutencao;
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.EquipamentoRepository;
+import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories.ManutencaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class EquipamentoController {
      * Obtém todos os equipamentos.
      * @return uma lista de equipamentos.
      */
+
+    @Autowired
+    private ManutencaoRepository manutencaoRepository;
 
     @GetMapping
     public List<Equipamento> getAllEquipamento() {
@@ -79,11 +84,21 @@ public class EquipamentoController {
      */
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEquipamento(@PathVariable Long id) {
-        Optional<Equipamento> equipamentoParaDeletar = equipamentoRepository.findById(id);
-        if (equipamentoParaDeletar.isPresent()) {
-            equipamentoRepository.delete(equipamentoParaDeletar.get());
-            return ResponseEntity.noContent().build();
+    public ResponseEntity<?> deleteEquipamentoAndManutencoes(@PathVariable Long id) {
+        Optional<Equipamento> equipamentoOptional = equipamentoRepository.findById(id);
+
+        if (equipamentoOptional.isPresent()) {
+            Equipamento equipamento = equipamentoOptional.get();
+
+            // Excluir todas as manutenções associadas ao equipamento
+            for (Manutencao manutencao : equipamento.getListaDeManutencao()) {
+                manutencaoRepository.delete(manutencao);
+            }
+
+            // Excluir o equipamento após excluir as manutenções associadas
+            equipamentoRepository.delete(equipamento);
+
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
