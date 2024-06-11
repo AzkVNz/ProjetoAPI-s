@@ -278,7 +278,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"equipamento\":{\r\n    \"idEquipamento\":1\r\n   },\r\n  \r\n    \"dataHoraInicio\": \"2018-02-05T13:11\",\r\n    \"dataHoraFim\":\"2018-02-05T13:50\",\r\n    \"descricaoServico\": \"Sexo\",\r\n    \"estado\":\"uso\"\r\n\r\n}",
+							"raw": "{\r\n   \"equipamento\": {\r\n      \"idEquipamento\": 1,\r\n      \"tipoEquipamento\":\"\",\r\n      \"descricao\": \"\",\r\n      \"estado\":\"\"\r\n   },\r\n   \"dataHoraInicio\": \"2024-06-10T08:00:00\",\r\n   \"dataHoraFim\": \"2024-06-10T12:00:00\",\r\n   \"descricaoServico\": \"Troca de óleo\",\r\n   \"estado\": \"Concluída\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -305,14 +305,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/pecas",
+							"raw": "http://localhost:8080/manutencao",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"pecas"
+								"manutencao"
 							]
 						}
 					},
@@ -324,14 +324,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/manutencao",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"manutencao"
 							]
 						}
 					},
@@ -343,14 +343,14 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/manutencao",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"manutencao"
 							]
 						}
 					},
@@ -362,14 +362,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/manutencao",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"manutencao"
 							]
 						}
 					},
@@ -433,14 +433,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/pecas",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"pecas"
 							]
 						}
 					},
@@ -451,15 +451,25 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Rosca\",\r\n    \"quantidade\":\"4\",\r\n    \"descricao\":\"riscado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/pecas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"pecas",
+								"1"
 							]
 						}
 					},
@@ -470,15 +480,25 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/estoque",
+							"raw": "http://localhost:8080/pecas/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"estoque"
+								"pecas",
+								"1"
 							]
 						}
 					},
