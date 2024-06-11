@@ -17,7 +17,7 @@ public class Veiculo {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name = "Veiculos_Pecas",
+            name = "veiculos_pecas",
             joinColumns = {@JoinColumn(name = "chassi")},
             inverseJoinColumns = {@JoinColumn(name = "idPecas")}
     )
