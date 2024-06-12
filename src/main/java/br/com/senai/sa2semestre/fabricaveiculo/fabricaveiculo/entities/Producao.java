@@ -12,14 +12,14 @@ public class Producao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducao;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
     private LocalDateTime dataHora;
     private Long quantidadeProduzida;
     private String estado;
 
-    @OneToMany(mappedBy = "producao")
+    @OneToMany(mappedBy = "producao", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Qualidade> listaDeQualidade;
 
