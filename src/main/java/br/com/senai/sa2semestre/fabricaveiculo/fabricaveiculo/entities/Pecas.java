@@ -19,7 +19,7 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas")
     @JsonIgnore
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "pecas")
+    @OneToMany(mappedBy = "pecas", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Producao> listaDeProducao;
     @ManyToMany(mappedBy = "pecas")
