@@ -15,7 +15,7 @@ public class Veiculo {
     private Long ano;
     private String cor;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "veiculos_pecas",
             joinColumns = {@JoinColumn(name = "chassi")},
