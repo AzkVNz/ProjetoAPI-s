@@ -12,7 +12,7 @@ public class Producao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProducao;
-    @ManyToOne(cascade = CascadeType.ALL, optional = true)
+    @ManyToOne
     @JoinColumn(name = "idPecas", referencedColumnName = "idPecas")
     private Pecas pecas;
     private LocalDateTime dataHora;
