@@ -19,7 +19,6 @@ public class Manutencao {
     private Equipamento equipamento;
     private LocalDateTime dataHoraInicio;
     private LocalDateTime dataHoraFim;
-
     private String descricaoServico;
     private String estado;
 
