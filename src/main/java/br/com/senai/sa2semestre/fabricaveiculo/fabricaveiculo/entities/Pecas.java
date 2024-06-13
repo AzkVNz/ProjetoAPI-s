@@ -19,11 +19,10 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas")
     @JsonIgnore
     private List<Estoque> listaDeEstoque;
-    @OneToMany(mappedBy = "pecas", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "pecas")
     @JsonIgnore
     private List<Producao> listaDeProducao;
-    @ManyToMany(mappedBy = "pecas")
-    @JsonIgnore
+    @ManyToMany(mappedBy = "pecas", cascade = CascadeType.ALL)
     private Set<Veiculo> veiculos = new HashSet<>();
 
     public Pecas() {
