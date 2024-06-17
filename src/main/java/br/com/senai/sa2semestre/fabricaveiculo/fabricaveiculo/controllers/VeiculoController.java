@@ -1,3 +1,6 @@
+/**
+ * Classe controladora para gerenciar operações relacionadas a entidades Veiculo.
+ */
 package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers;
 
 import br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities.Veiculo;
@@ -8,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.Vector;
 
+/**
+ * Controlador REST para lidar com operações CRUD para entidades Veiculo.
+ */
 @RestController
 @RequestMapping("/veiculos")
 public class VeiculoController {
@@ -18,11 +22,22 @@ public class VeiculoController {
     @Autowired
     private VeiculoRepository veiculoRepository;
 
+    /**
+     * Recupera todos os Veiculos.
+     *
+     * @return Lista de entidades Veiculo
+     */
     @GetMapping
     public List<Veiculo> getAllVeiculo() {
         return veiculoRepository.findAll();
     }
 
+    /**
+     * Recupera um Veiculo pelo seu chassi.
+     *
+     * @param chassi O chassi do Veiculo a ser recuperado
+     * @return ResponseEntity contendo o Veiculo encontrado
+     */
     @GetMapping("/{chassi}")
     public ResponseEntity<Veiculo> getPecaById(@PathVariable String chassi) {
         Optional<Veiculo> veiculoBuscado = veiculoRepository.findById(chassi);
@@ -30,11 +45,24 @@ public class VeiculoController {
                 ResponseEntity.notFound().build());
     }
 
+    /**
+     * Cria um novo Veiculo.
+     *
+     * @param veiculo O Veiculo a ser criado
+     * @return O Veiculo criado
+     */
     @PostMapping
     public Veiculo createVeiculo(@RequestBody Veiculo veiculo) {
         return veiculoRepository.save(veiculo);
     }
 
+    /**
+     * Atualiza um Veiculo existente pelo seu chassi.
+     *
+     * @param chassi O chassi do Veiculo a ser atualizado
+     * @param veiculoComDadosAtualizados Os novos dados para o Veiculo
+     * @return ResponseEntity contendo o Veiculo atualizado
+     */
     @PutMapping("/{chassi}")
     public ResponseEntity<Veiculo> uptadeVeiculo(@PathVariable String chassi, @RequestBody Veiculo veiculoComDadosAtualizados) {
         Optional<Veiculo> veiculoExistente = veiculoRepository.findById(chassi);
@@ -46,6 +74,12 @@ public class VeiculoController {
         }
     }
 
+    /**
+     * Exclui um Veiculo pelo seu chassi.
+     *
+     * @param chassi O chassi do Veiculo a ser excluído
+     * @return ResponseEntity indicando o resultado da operação de exclusão
+     */
     @DeleteMapping("/{chassi}")
     public ResponseEntity<Veiculo> deleVeiculo(@PathVariable String chassi) {
         Optional<Veiculo> veiculoParaExcluir = veiculoRepository.findById(chassi);
