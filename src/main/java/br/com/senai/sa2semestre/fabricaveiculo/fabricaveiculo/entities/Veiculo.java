@@ -2,9 +2,7 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "veiculo")
@@ -15,18 +13,18 @@ public class Veiculo {
     private Long ano;
     private String cor;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "veiculos_pecas",
             joinColumns = {@JoinColumn(name = "chassi")},
             inverseJoinColumns = {@JoinColumn(name = "idPecas")}
     )
-    private Set<Pecas> pecas = new HashSet<>();
+    private List<Pecas> pecas = new ArrayList<>();
 
     public Veiculo() {
     }
 
-    public Veiculo(String chassi, String modelo, Long ano, String cor, Set<Pecas> pecas) {
+    public Veiculo(String chassi, String modelo, Long ano, String cor, List<Pecas> pecas) {
         this.chassi = chassi;
         this.modelo = modelo;
         this.ano = ano;
@@ -66,11 +64,11 @@ public class Veiculo {
         this.cor = cor;
     }
 
-    public Set<Pecas> getPecas() {
+    public List<Pecas> getPecas() {
         return pecas;
     }
 
-    public void setPecas(Set<Pecas> pecas) {
+    public void setPecas(List<Pecas> pecas) {
         this.pecas = pecas;
     }
 
@@ -109,3 +107,4 @@ public class Veiculo {
                 '}';
     }
 }
+
