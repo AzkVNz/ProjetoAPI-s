@@ -3,10 +3,7 @@ package br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Pecas {
@@ -22,13 +19,14 @@ public class Pecas {
     @OneToMany(mappedBy = "pecas")
     @JsonIgnore
     private List<Producao> listaDeProducao;
-    @ManyToMany(mappedBy = "pecas", cascade = CascadeType.ALL)
-    private Set<Veiculo> veiculos = new HashSet<>();
+    @ManyToMany(mappedBy = "pecas")
+    @JsonIgnore
+    private List<Veiculo> veiculos = new ArrayList<>();
 
     public Pecas() {
     }
 
-    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, Set<Veiculo> veiculos) {
+    public Pecas(Long idPecas, String nome, String descricao, Long quantidade, List<Estoque> listaDeEstoque, List<Producao> listaDeProducao, List<Veiculo> veiculos) {
         this.idPecas = idPecas;
         this.nome = nome;
         this.descricao = descricao;
@@ -86,11 +84,11 @@ public class Pecas {
         this.listaDeProducao = listaDeProducao;
     }
 
-    public Set<Veiculo> getVeiculos() {
+    public List<Veiculo> getVeiculos() {
         return veiculos;
     }
 
-    public void setVeiculos(Set<Veiculo> veiculos) {
+    public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
 
@@ -126,10 +124,14 @@ public class Pecas {
 
     @Override
     public String toString() {
-        return
-                "Id da peeça: " + idPecas +
-                "Nome da peça: " + nome + '\'' +
-                "Descrição da peça: " + descricao + '\'' +
-                "Quantidade: " + Quantidade;
+        return "Pecas{" +
+                "idPecas=" + idPecas +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", Quantidade=" + Quantidade +
+                ", listaDeEstoque=" + listaDeEstoque +
+                ", listaDeProducao=" + listaDeProducao +
+                ", veiculos=" + veiculos +
+                '}';
     }
 }
