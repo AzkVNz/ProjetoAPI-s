@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2a13abfe-32b7-4187-b44c-191a09f7ddda",
+		"_postman_id": "ba536476-d6d1-4dc7-8004-e57b05e4ddb7",
 		"name": "Requisições SA 2° Semestre",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "35354965"
@@ -517,7 +517,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/pecas/1",
+							"raw": "http://localhost:8080/pecas/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -525,7 +525,7 @@
 							"port": "8080",
 							"path": [
 								"pecas",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -759,15 +759,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/qqualidades/1",
+							"raw": "http://localhost:8080/qualidades/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"qqualidades",
-								"1"
+								"qualidades",
+								"3"
 							]
 						}
 					},
@@ -905,7 +905,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n    \"chassi\":\"BW12\",\r\n    \"modelo\":\"sport\",\r\n    \"ano\":2010,\r\n    \"cor\":\"azul\",\r\n    \r\n    \"pecas\":[\r\n        {\r\n            \"idPecas\":2,\r\n            \"nome\":\"Rosca\",\r\n            \"quantidade\":\"4\",\r\n            \"descricao\":\"riscado\"\r\n        }\r\n    ]\r\n        \r\n    \r\n}",
+							"raw": "{\r\n    \r\n    \"chassi\":\"BW12\",\r\n    \"modelo\":\"sport\",\r\n    \"ano\":2010,\r\n    \"cor\":\"azul\",\r\n    \r\n    \"pecas\":[\r\n        {\r\n            \"idPecas\":2\r\n        }\r\n    ]\r\n        \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
