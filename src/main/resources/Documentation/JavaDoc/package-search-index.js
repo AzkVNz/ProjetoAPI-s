@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo"},{"l":"br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.controllers"},{"l":"br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.entities"},{"l":"br.com.senai.sa2semestre.fabricaveiculo.fabricaveiculo.repositories"}];updateSearchResults();
